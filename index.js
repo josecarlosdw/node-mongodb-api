@@ -10,11 +10,11 @@ const connectDB = require('./connectMongo')
 
 connectDB()
 
-const RoomsModel = require('./models/room.model')
+const BookModel = require('./models/book.model')
 
-app.get('/api/v1/rooms', async (req, res) => {
+app.get('/api/v1/books', async (req, res) => {
 
-    /* const { limit = 5, orderBy = 'name', sortBy = 'asc', keyword } = req.query
+    const { limit = 5, orderBy = 'name', sortBy = 'asc', keyword } = req.query
     let page = +req.query?.page
 
     if (!page || page <= 0) page = 1
@@ -40,11 +40,11 @@ app.get('/api/v1/rooms', async (req, res) => {
         return res.status(500).json({
             msg: error.message
         })
-    } */
+    }
 })
 
-app.get('/api/v1/rooms/:id', async (req, res) => {
-    /* try {
+app.get('/api/v1/books/:id', async (req, res) => {
+    try {
         const data = await BookModel.findById(req.params.id)
 
         if (data) {
@@ -61,11 +61,11 @@ app.get('/api/v1/rooms/:id', async (req, res) => {
         return res.status(500).json({
             msg: error.message
         })
-    } */
+    }
 })
 
-app.post('/api/v1/rooms', async (req, res) => {
-   /*  try {
+app.post('/api/v1/books', async (req, res) => {
+    try {
         const { name, author, price, description } = req.body
         const book = new BookModel({
             name, author, price, description
@@ -79,11 +79,11 @@ app.post('/api/v1/rooms', async (req, res) => {
         return res.status(500).json({
             msg: error.message
         })
-    } */
+    }
 })
 
-app.put('/api/v1/rooms/:id', async (req, res) => {
-    /* try {
+app.put('/api/v1/books/:id', async (req, res) => {
+    try {
         const { name, author, price, description } = req.body
         const { id } = req.params
 
@@ -99,11 +99,11 @@ app.put('/api/v1/rooms/:id', async (req, res) => {
         return res.status(500).json({
             msg: error.message
         })
-    } */
+    }
 })
 
-app.delete('/api/v1/rooms/:id', async (req, res) => {
-   /*  try {
+app.delete('/api/v1/books/:id', async (req, res) => {
+    try {
         await BookModel.findByIdAndDelete(req.params.id)
         return res.status(200).json({
             msg: 'Ok',
@@ -112,7 +112,7 @@ app.delete('/api/v1/rooms/:id', async (req, res) => {
         return res.status(500).json({
             msg: error.message
         })
-    } */
+    }
 })
 
 const PORT = process.env.PORT
